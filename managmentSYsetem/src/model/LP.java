@@ -7,6 +7,15 @@ public class LP {
 	private String artist;
 	private String publicationDate;
 	
+	public LP(String barcode, String title, String artist, String publicationDate) {
+		super();
+		this.barcode = barcode;
+		this.title = title;
+		this.artist = artist;
+		this.publicationDate = publicationDate;	
+	}
+	
+	
 	public String getBarcode() {
 		return barcode;
 	}
