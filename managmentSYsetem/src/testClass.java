@@ -1,4 +1,6 @@
 
 public class testClass {
-System.out.println("hej");
+	public testClass() {
+		System.out.println("hej");
+	}
 }
