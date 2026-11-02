@@ -9,6 +9,15 @@ public class Friend {
 	private String city;
 	
 	
+	public Friend(String name, String phone, String address, String postalCode, String city) {
+		this.name = name;
+		this.phone = phone;
+		this.address = address;
+		this.postalCode = postalCode;
+		this.city = city;
+	}
+
+	
 	public String getName() {
 		return name;
 	}
