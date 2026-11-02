@@ -10,3 +10,4 @@
 
 # Allow directory traversal
 !*/
+/bin/
