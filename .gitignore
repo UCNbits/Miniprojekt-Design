@@ -5,7 +5,7 @@
 
 # Allow .java files
 !*.java
-
+!*.txt
 # Allow other important files
 !.gitignore
 !README.md
