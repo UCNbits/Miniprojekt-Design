@@ -5,12 +5,11 @@ import java.util.ArrayList;
 
 public class FriendContainer {
 	private ArrayList<Friend> friends;
-	private FriendContainer container;
 	
-	public FriendContainer(ArrayList<Friend> friends, FriendContainer container) {
+	
+	public FriendContainer() {
 		
 		this.friends = new ArrayList<>();
-		this.setContainer(container);
 	}
 
 	public ArrayList<Friend> getFriends() {
@@ -19,22 +18,25 @@ public class FriendContainer {
 
 	public boolean addFriend(Friend f) {
 		boolean res = false;
-		
-		
-		return res;
+        Friend conflic = findByPhone(f.getPhone());
+        if(conflic == null){
+            this.friends.add(f);
+            res = true;
+        }
+        return res;
 	}
-
-	public FriendContainer getContainer() {
-		return container;
-	}
-
-	public void setContainer(FriendContainer container) {
-		this.container = container;
-	}
-
-
 	
+    
+    public Friend findByPhone(String phone){
+        Friend res = null;
+        int i = 0;
+        while(i < this.friends.size() && res == null){
+            if(friends.get(i).getPhone().equalsIgnoreCase(phone)){
+                res = friends.get(i);
+            }
+            i++;
+        }
+        return res;
+    }
 	
-	
-
 }
