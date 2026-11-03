@@ -5,12 +5,12 @@ import java.util.ArrayList;
 
 public class FriendContainer {
 	private ArrayList<Friend> friends;
-	private FriendContainer controller;
+	private FriendContainer container;
 	
-	public FriendContainer(ArrayList<Friend> friends, FriendContainer controller) {
+	public FriendContainer(ArrayList<Friend> friends, FriendContainer container) {
 		
 		this.friends = new ArrayList<>();
-		this.setController(controller);
+		this.setContainer(container);
 	}
 
 	public ArrayList<Friend> getFriends() {
@@ -24,12 +24,12 @@ public class FriendContainer {
 		return res;
 	}
 
-	public FriendContainer getController() {
-		return controller;
+	public FriendContainer getContainer() {
+		return container;
 	}
 
-	public void setController(FriendContainer controller) {
-		this.controller = controller;
+	public void setContainer(FriendContainer container) {
+		this.container = container;
 	}
 
 
