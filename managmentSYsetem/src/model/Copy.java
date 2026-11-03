@@ -1,50 +1,46 @@
 package model;
 
 public class Copy {
-private String barcode;
-private String title;
-private String artist;
-private String publicationDate;
+	private int copyNumber;
+	private String purhcaseDate;
+	private double purchasePrice;
 
-public Copy(String barcode, String title, String artist, String publicationDate) {
-	super();
-	this.barcode = barcode;
-	this.title = title;
-	this.artist = artist;
-	this.publicationDate = publicationDate;
-}
 
-public String getBarcode() {
-	return barcode;
-}
-
-public void setBarcode(String barcode) {
-	this.barcode = barcode;
-}
-
-public String getTitle() {
-	return title;
-}
-
-public void setTitle(String title) {
-	this.title = title;
-}
-
-public String getArtist() {
-	return artist;
-}
-
-public void setArtist(String artist) {
-	this.artist = artist;
-}
-
-public String getPublicationDate() {
-	return publicationDate;
-}
-
-public void setPublicationDate(String publicationDate) {
-	this.publicationDate = publicationDate;
-}
-
+	public Copy(int copyNumber, String purhcaseDate, double purchasePrice) {
+		super();
+		this.copyNumber = copyNumber;
+		this.purhcaseDate = purhcaseDate;
+		this.purchasePrice = purchasePrice;
+	}
+	
+	
+	public int getCopyNumber() {
+		return copyNumber;
+	}
+	
+	
+	public void setCopyNumber(int copyNumber) {
+		this.copyNumber = copyNumber;
+	}
+	
+	
+	public String getPurhcaseDate() {
+		return purhcaseDate;
+	}
+	
+	
+	public void setPurhcaseDate(String purhcaseDate) {
+		this.purhcaseDate = purhcaseDate;
+	}
+	
+	
+	public double getPurchasePrice() {
+		return purchasePrice;
+	}
+	
+	
+	public void setPurchasePrice(double purchasePrice) {
+		this.purchasePrice = purchasePrice;
+	}
 
 }

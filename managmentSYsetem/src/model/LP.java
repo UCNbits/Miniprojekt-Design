@@ -2,12 +2,12 @@ package model;
 
 public class LP {
 	
-	private String barcode;
+	private int barcode;
 	private String title;
 	private String artist;
 	private String publicationDate;
 	
-	public LP(String barcode, String title, String artist, String publicationDate) {
+	public LP(int barcode, String title, String artist, String publicationDate) {
 		super();
 		this.barcode = barcode;
 		this.title = title;
@@ -16,10 +16,10 @@ public class LP {
 	}
 	
 	
-	public String getBarcode() {
+	public int getBarcode() {
 		return barcode;
 	}
-	public void setBarcode(String barcode) {
+	public void setBarcode(int barcode) {
 		this.barcode = barcode;
 	}
 	public String getTitle() {
