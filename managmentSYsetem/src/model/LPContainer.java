@@ -2,6 +2,11 @@ package model;
 import java.util.ArrayList;
 import model.LP;
 public class LPContainer {
+	
+	public static LP getInstance() {
+		return null;
+	}
+	
 	private ArrayList<LP> lps;
 	
 	
