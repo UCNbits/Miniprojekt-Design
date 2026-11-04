@@ -5,13 +5,25 @@ public class Loan {
 	private String borrowDate;
 	private String returnDate;
 	private boolean status;
-	
-	public Loan(int loanNumber, String borrowDate, String returnDate, boolean status) {
-		super();
+	private int loanNumbe;
+	private String name;
+	private String phone;
+	private String address;
+	private int postalCode;
+	private String city;
+
+	public Loan(int loanNumber, String borrowDate, String returnDate, boolean status, int loanNumbe, String name,
+			String phone, String address, int postalCode, String city) {
 		this.loanNumber = loanNumber;
 		this.borrowDate = borrowDate;
 		this.returnDate = returnDate;
 		this.status = status;
+		this.loanNumbe = loanNumbe;
+		this.name = name;
+		this.phone = phone;
+		this.address = address;
+		this.postalCode = postalCode;
+		this.city = city;
 	}
 
 	public int getLoanNumber() {
@@ -46,4 +58,54 @@ public class Loan {
 		this.status = status;
 	}
 
+	public int getLoanNumbe() {
+		return loanNumbe;
+	}
+
+	public void setLoanNumbe(int loanNumbe) {
+		this.loanNumbe = loanNumbe;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public int getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(int postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	
+	
 }

@@ -43,4 +43,5 @@ public class Copy {
 		this.purchasePrice = purchasePrice;
 	}
 
+
 }

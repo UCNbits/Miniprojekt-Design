@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 
 public class FriendContainer {
+<<<<<<< HEAD
 	private static FriendContainer instance;
 	private ArrayList<Friend> friendList = new ArrayList<>();
 	
@@ -13,6 +14,14 @@ public class FriendContainer {
 			instance = new FriendContainer();
 		}
 		return instance;
+=======
+	
+	private ArrayList<Friend> friends;
+	
+	
+	public FriendContainer() {
+		this.friends = new ArrayList<>();
+>>>>>>> e1f96c9e863ab43266fb8da42e2bfad2b9d67c58
 	}
 
 	public ArrayList<Friend> getFriends() {
