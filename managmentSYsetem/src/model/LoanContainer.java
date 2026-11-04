@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class LoanContainer {
 
 	private ArrayList<Loan> loans;
+	private static LoanContainer instance;
 	
 	public LoanContainer() {
 		this.loans = new ArrayList<>();

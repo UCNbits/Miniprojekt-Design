@@ -11,7 +11,7 @@ public class Loan {
 	private String address;
 	private int postalCode;
 	private String city;
-	
+
 
 	public Loan(int loanNumber, String borrowDate, String returnDate, boolean status, String name,
 			String phone, String address, int postalCode, String city) {
@@ -96,13 +96,6 @@ public class Loan {
 
 	public void setCity(String city) {
 		this.city = city;
-	}
-
-	public void describe() {
-		System.out.println("Loan Number: " + loanNumber + "\n" + "Borrow Date: " + borrowDate + "\n" + "Return Date: " + returnDate + "\n" + "Name: " 
-						 + name + "\n" + status + "Phone: " + phone + "\n" + "Address: " + address + "\n" + "Postal Code: " + postalCode + "\n" + "City: " + 
-						 city + "\n");
-		
 	}
 
 	
