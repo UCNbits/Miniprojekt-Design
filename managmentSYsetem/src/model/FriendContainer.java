@@ -6,9 +6,10 @@ import java.util.ArrayList;
 public class FriendContainer {
 
 	private static FriendContainer instance;
-	private ArrayList<Friend> friendList = new ArrayList<>();
+	private ArrayList<Friend> friendList;
 	
 	
+	// Creates a singleton so that we only have one
 	public static FriendContainer getInstance() {
 		if(instance == null) {
 			instance = new FriendContainer();
@@ -16,15 +17,16 @@ public class FriendContainer {
 		return instance;
 	}
 	
-	
+	// Creates the friend container
 	public FriendContainer() {
 		this.friendList = new ArrayList<>();
 	}
-
+	
+	
 	public ArrayList<Friend> getFriends() {
 		return friendList;
-	}
-
+	}  
+	
 	public boolean addFriend(Friend f) {
 		boolean res = false;
         Friend conflic = findByPhone(f.getPhone());
@@ -36,41 +38,48 @@ public class FriendContainer {
 	}
 	
 	
-	public boolean removeFriend(String phone, String name) {
-		boolean res = false;
-
+	public Friend removeFriend(String phone, String name) {
+		Friend res = null;
 		for(int i = 0; i < friendList.size(); i++) {
 			Friend user = friendList.get(i);
-			if(friendList.get(i).getName() == name && friendList.get(i).getPhone() == phone) {
+			if(user.getName().equals(name) && user.getPhone().equals(phone)) {
 				friendList.remove(i);
-				System.out.println("Removed: " + user.getName() + "from the list." +
-				"\n    Name: " + user.getName() +
-				"\n    Phone: " + user.getPhone() + 
-				"\n    Address: " + user.getAddress() +
-				"\n    postalCode: " + user.getPostalCode() +
-				"\n    City: " + user.getCity());
+				res = user;
 				break;
-				
-			} else {
-				System.out.println("Could not find user. Please recheck the details and try again.");
-				res = false;
-			}	
+			} 
 		}
-		
 		return res;
 	}
 	
     
     public Friend findByPhone(String phone){
-        Friend res = null;
-        int i = 0;
-        while(i < this.friendList.size() && res == null){
-            if(friendList.get(i).getPhone().equalsIgnoreCase(phone)){
-                res = friendList.get(i);
-            }
-            i++;
-        }
-        return res;
+    	Friend res = null;
+    	for(int i = 0; i < friendList.size(); i++) {
+    		if (friendList.get(i).getPhone().equals(phone)) {
+    			res = friendList.get(i);
+    			break;
+    		} else {
+    			res = null;
+    		}	
+    	}
+    	return res;
     }
-	
+    		
+    
+    public Friend updateInfo(String currPhone, String newName, String newPhone, String newAddress, String newPostal, String newCity) {
+    	Friend f = findByPhone(currPhone);
+    	if (f != null) {
+    		f.setName(newName);
+    		f.setPhone(newPhone);
+    		f.setAddress(newAddress);
+    		f.setPostalCode(newPostal);
+    		f.setCity(newCity);
+    	}
+    	return f;
+    }
+    
+    
+    
+    
+    
 }

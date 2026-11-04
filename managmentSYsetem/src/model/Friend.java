@@ -5,15 +5,15 @@ public class Friend {
 	private String name;
 	private String phone;
 	private String address;
-	private int postalCode;
+	private String postalCode;
 	private String city;
 	
 	
-	public Friend(String name, String phone, String address, int postalCode, String city) {
+	public Friend(String name, String phone, String address, String postal, String city) {
 		this.name = name;
 		this.phone = phone;
 		this.address = address;
-		this.postalCode = postalCode;
+		this.postalCode = postal;
 		this.city = city;
 	}
 
@@ -36,10 +36,10 @@ public class Friend {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public int getPostalCode() {
+	public String getPostalCode() {
 		return postalCode;
 	}
-	public void setPostalCode(int postalCode) {
+	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
 	public String getCity() {
