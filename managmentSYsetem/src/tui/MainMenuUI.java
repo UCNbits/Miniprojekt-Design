@@ -47,7 +47,7 @@ public class MainMenuUI {
 	
 
 	private void RegisterLoan() {
-		FriendController.findFriend();
+		FriendController.findFriend(String phone);
 		
 		//selectFriend();
 		//selectLpCopy();
