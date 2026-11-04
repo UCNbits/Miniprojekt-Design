@@ -1,24 +1,24 @@
 package model;
 
 public class Loan {
+	
 	private int loanNumber;
 	private String borrowDate;
 	private String returnDate;
 	private boolean status;
-	private int loanNumbe;
 	private String name;
 	private String phone;
 	private String address;
 	private int postalCode;
 	private String city;
+	
 
-	public Loan(int loanNumber, String borrowDate, String returnDate, boolean status, int loanNumbe, String name,
+	public Loan(int loanNumber, String borrowDate, String returnDate, boolean status, String name,
 			String phone, String address, int postalCode, String city) {
 		this.loanNumber = loanNumber;
 		this.borrowDate = borrowDate;
 		this.returnDate = returnDate;
 		this.status = status;
-		this.loanNumbe = loanNumbe;
 		this.name = name;
 		this.phone = phone;
 		this.address = address;
@@ -56,14 +56,6 @@ public class Loan {
 
 	public void setStatus(boolean status) {
 		this.status = status;
-	}
-
-	public int getLoanNumbe() {
-		return loanNumbe;
-	}
-
-	public void setLoanNumbe(int loanNumbe) {
-		this.loanNumbe = loanNumbe;
 	}
 
 	public String getName() {
@@ -104,6 +96,13 @@ public class Loan {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public void describe() {
+		System.out.println("Loan Number: " + loanNumber + "\n" + "Borrow Date: " + borrowDate + "\n" + "Return Date: " + returnDate + "\n" + "Name: " 
+						 + name + "\n" + status + "Phone: " + phone + "\n" + "Address: " + address + "\n" + "Postal Code: " + postalCode + "\n" + "City: " + 
+						 city + "\n");
+		
 	}
 
 	
