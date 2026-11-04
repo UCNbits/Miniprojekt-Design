@@ -10,6 +10,7 @@ public class Tryme {
 		container.addFriend(jose);
 		container.addFriend(joe);
 		
+		
 		for(Friend f : container.getFriends()) {
 			f.describe();
 		}

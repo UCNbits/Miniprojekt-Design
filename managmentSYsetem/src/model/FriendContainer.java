@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 
 public class FriendContainer {
+	
 	private ArrayList<Friend> friends;
 	
 	
 	public FriendContainer() {
-		
 		this.friends = new ArrayList<>();
 	}
 
