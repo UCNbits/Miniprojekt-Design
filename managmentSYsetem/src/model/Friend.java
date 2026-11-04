@@ -52,5 +52,4 @@ public class Friend {
 	public void describe(){
         System.out.println("Name: " + name + "\n" + "Phone: " + phone + "\n" + "Address: " + address + "\n" +  "Postal Code: " + postalCode + "\n" + "City:" + city + "\n");
     }
-	
 }
