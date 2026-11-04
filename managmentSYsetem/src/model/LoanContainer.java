@@ -28,7 +28,7 @@ public class LoanContainer {
 		Loan res = null;
 		int i = 0;
 		while(i<this.loans.size() && res == null) {
-			if(loans.get(i).getLoanNumber.IgnoreCase(loanNumber)) {
+			if(loans.get(i).getLoanNumber() == loanNumber) {
 				res = loans.get(i);
 			}
 		}
