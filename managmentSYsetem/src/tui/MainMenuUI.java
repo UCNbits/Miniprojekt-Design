@@ -128,50 +128,19 @@ public class MainMenuUI {
 	
 	
 	
-	private void updateMenu() {
+	private void updateMenu() {		
+		String currPhone = getInput("Enter friends current number:");
+		String newName = getInput("Enter new name:");
+		String newPhone = getInput("Enter new phone number:");
+		String newAddress = getInput("Enter new address:");
+		String newPostal = getInput("Enter new postal code:");
+		String newCity = getInput("Enter new city:");
 		
-		boolean friendToggle = true;
-		while (friendToggle) {
-			System.out.println("\n--- Update Menu ---");
-			System.out.println("1 - Update name");
-			System.out.println("2 - Update phone");
-			System.out.println("3 - Update address");
-			System.out.println("4 - Update postal code");
-			System.out.println("5 - Update city");
-			System.out.println("0 - Return to main menu");
-			
-			String choice = getChoice();
-			System.out.println(choice);
-			
-			switch(choice){
-			case "1": 
-				String currPhone = getInput("Enter friends current number:");
-				String newName = getInput("Enter new name:");
-				String newPhone = getInput("Enter new phone number:");
-				String newAddress = getInput("Enter new address:");
-				String newPostal = getInput("Enter new postal code:");
-				String newCity = getInput("Enter new city:");
-				
-
-
-				Friend updateFriend = fc.updateName(currPhone, newName, newPhone, newAddress, newPostal, newCity);
-				printFriendData(updateFriend);
-				
-			break;
-			case "2": //updatePhone();
-			break;
-			case "3": //updateAddress();
-			break;
-			case "4": //updatePostalCode();
-			break;
-			case "5": //updateCity()
-			case "0": return;
-			default:
-				System.out.println("Some error - friends menu");
-			}
-		}
+		Friend updateFriend = fc.updateInfo(currPhone, newName, newPhone, newAddress, newPostal, newCity);
+		printFriendData(updateFriend);
 	}
 
+	
 	private void lpMenu() {
 		
 		boolean lpToggle = true;
