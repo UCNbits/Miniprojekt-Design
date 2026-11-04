@@ -16,8 +16,4 @@ public class FriendController {
 	public void removeFriend(String phone, String name) {
 		FriendContainer.getInstance().removeFriend(phone, name);
 	}
-	
-	
-	
-
 }

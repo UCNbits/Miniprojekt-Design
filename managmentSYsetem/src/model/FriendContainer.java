@@ -15,13 +15,10 @@ public class FriendContainer {
 		}
 		return instance;
 	}
-
-	
-	private ArrayList<Friend> friends;
 	
 	
 	public FriendContainer() {
-		this.friends = new ArrayList<>();
+		this.friendList = new ArrayList<>();
 	}
 
 	public ArrayList<Friend> getFriends() {
@@ -41,7 +38,6 @@ public class FriendContainer {
 	
 	public boolean removeFriend(String phone, String name) {
 		boolean res = false;
-		int userPlace;
 
 		for(int i = 0; i < friendList.size(); i++) {
 			Friend user = friendList.get(i);
