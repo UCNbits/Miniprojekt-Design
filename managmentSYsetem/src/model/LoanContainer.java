@@ -16,7 +16,6 @@ public class LoanContainer {
 	
 	public boolean addLoan(Loan l) {
 		boolean res = false;
-		Loan confilc = findByPhone(l.getLoanNumbe());
 		
 		return res;
 	}
