@@ -2,38 +2,54 @@ package model;
 
 import java.util.ArrayList;
 
+import controller.LPController;
+
 public class LoanContainer {
 
-	private ArrayList<Loan> loans;
 	private static LoanContainer instance;
-	
-	public LoanContainer() {
-		this.loans = new ArrayList<>();
-	}
-	
-	public ArrayList<Loan> getLoan(){
-		return loans;
-	}
-	
-	public boolean addLoan(Loan l) {
-		boolean res = false;
-		Loan confilc = findByLoanNumber(l.getLoanNumber());
-		if(confilc == null) {
-			this.loans.add(l);
-			res = true;
+	private ArrayList<Loan> loanList;
+	private int nextLoanNumber = 1;
+
+	// Create a singleton
+	public static LoanContainer getInstance() {
+		if (instance == null) {
+			instance = new LoanContainer();
 		}
-		return res;
+		return instance;
 	}
 
-	private Loan findByLoanNumber(int loanNumber) {
-		Loan res = null;
-		int i = 0;
-		while(i<this.loans.size() && res == null) {
-			if(loans.get(i).getLoanNumber() == loanNumber) {
-				res = loans.get(i);
+	// Creates the friend container
+	public LoanContainer() {
+		this.loanList = new ArrayList<>();
+	}
+
+	public Loan addLoan(String borrowDate, String returnDate, String status, Friend friend, LP lp, Copy copy) {
+		int loannumber = nextLoanNumber++;
+		Loan loan = new Loan(loannumber, borrowDate, returnDate, status, friend, lp, copy);
+		loanList.add(loan);
+		return loan;
+	}
+
+	public Loan findByLoanNumber(int loanNumber) {
+		for (Loan loan : loanList) {
+			if (loan.getLoanNumber() == loanNumber) {
+				return loan;
 			}
 		}
-		return res;
+		return null;
+	}
+
+	public boolean removeLoan(int loanNumber) {
+		Loan loan = findByLoanNumber(loanNumber);
+		if (loan != null) {
+			loanList.remove(loan);
+			return true;
+		}
+		return false;
+	}
+
+	public ArrayList<Loan> getAllLoans() {
+		return loanList;
 	}
 
 }

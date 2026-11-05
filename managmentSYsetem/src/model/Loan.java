@@ -1,29 +1,25 @@
 package model;
 
 public class Loan {
-	
+
 	private int loanNumber;
 	private String borrowDate;
 	private String returnDate;
-	private boolean status;
-	private String name;
-	private String phone;
-	private String address;
-	private int postalCode;
-	private String city;
+	private String status;
 
+	private Friend friend;
+	private LP lp;
+	private Copy copy;
 
-	public Loan(int loanNumber, String borrowDate, String returnDate, boolean status, String name,
-			String phone, String address, int postalCode, String city) {
+	public Loan(int loanNumber, String borrowDate, String returnDate, String status, Friend friend, LP lp, Copy copy) {
 		this.loanNumber = loanNumber;
 		this.borrowDate = borrowDate;
 		this.returnDate = returnDate;
 		this.status = status;
-		this.name = name;
-		this.phone = phone;
-		this.address = address;
-		this.postalCode = postalCode;
-		this.city = city;
+		this.friend = friend;
+		this.lp = lp;
+		this.copy = copy;
+
 	}
 
 	public int getLoanNumber() {
@@ -50,54 +46,23 @@ public class Loan {
 		this.returnDate = returnDate;
 	}
 
-	public boolean isStatus() {
+	public String isStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	public String getName() {
-		return name;
+	public Friend getFriend() {
+		return friend;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public LP getLp() {
+		return lp;
 	}
 
-	public String getPhone() {
-		return phone;
+	public Copy getCopy() {
+		return copy;
 	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public int getPostalCode() {
-		return postalCode;
-	}
-
-	public void setPostalCode(int postalCode) {
-		this.postalCode = postalCode;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	
-	
 }
