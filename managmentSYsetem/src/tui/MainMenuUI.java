@@ -3,13 +3,17 @@ package tui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import model.Copy;
 import model.Friend;
+import model.LP;
 import controller.FriendController;
+import controller.LPController;
 
 
 public class MainMenuUI {
 	private static Scanner scanner;
 	FriendController fc = new FriendController();
+	LPController lpc = new LPController();
 	
 	public static void main(String[] args) {
 		new MainMenuUI();
@@ -19,24 +23,20 @@ public class MainMenuUI {
 	}	
 	
 	public MainMenuUI() {
-		String tName = "Malthe";
-		String tPhone = "12345678";
-		String tAddress = "Sofiendalvej";
-		String tPostal = "9000";
-		String tCity = "Aalborg";
-		Friend friend = new Friend(tName, tPhone, tAddress, tPostal, tCity);
+
+		Friend friend = new Friend("Malthe", "12345678", "Sofiendalvej", "9000", "Aalborg");
 		fc.addFriend(friend);
 		
-		String tName1 = "A";
-		String tPhone1 = "123";
-		String tAddress1 = "B";
-		String tPostal1 = "1";
-		String tCity1 = "C";
-		Friend friend1 = new Friend(tName1, tPhone1, tAddress1, tPostal1, tCity1);
+		Friend friend1 = new Friend("A", "123", "coolAddress", "9999", "coolCity");
 		fc.addFriend(friend1);
 		
+		createLpTest(123, "Santas comming for us", "Sia", "24-12-2099", 1, "12-25-2099", 123.456);
+		createLpTest(123, "Santas comming for us", "Sia", "24-12-2099", 2, "12-25-2099", 999.99);
+		createLpTest(1234, "Thunder Struck", "ADDC", "24-12-1999", 1, "01-01-2000", 12.34);
+
+
 		
-		
+			
 		
 		scanner = new Scanner(System.in);	
 		
@@ -71,11 +71,10 @@ public class MainMenuUI {
 				System.out.println("Some error");
 				
 			}	
+		
 		}
 	}
 	
-	
-	// update logic missing
 	private void friendsMenu() {
 		boolean friendToggle = true;
 		while (friendToggle) {
@@ -124,10 +123,6 @@ public class MainMenuUI {
 		}
 	}
 	
-	
-	
-	
-	
 	private void updateMenu() {		
 		String currPhone = getInput("Enter friends current number:");
 		String newName = getInput("Enter new name:");
@@ -141,6 +136,8 @@ public class MainMenuUI {
 	}
 
 	
+	
+	
 	private void lpMenu() {
 		
 		boolean lpToggle = true;
@@ -149,7 +146,9 @@ public class MainMenuUI {
 			System.out.println("1 - Add LP");
 			System.out.println("2 - Remove LP");
 			System.out.println("3 - Find LP");
-			System.out.println("4 - Update LP");
+			System.out.println("4 - View all Lp's");
+			System.out.println("5 - Update LP");
+			System.out.println("6 - Update LP copy");
 			System.out.println("0 - Return to main menu");
 			
 			String choice = getChoice();
@@ -157,13 +156,86 @@ public class MainMenuUI {
 			
 			switch(choice){
 			case "1": //addLp();
+				int barcode = getInputInt("Enter lp barcoode:");
+					String title = getInput("Enter lp title:");
+					String artist = getInput("Enter lp artist:");
+					String pubDate = getInput("Enter lp publication date:");
+					int copyNumber = getInputInt("Enter copy number:");
+					String purchaseDate = getInput("Enter purchase date:");
+					double purchasePrice = getInputDouble("Enter purchase price:");
+					
+					LP lp = new LP(barcode, title, artist, pubDate);
+					
+					if (lpc.addLp(lp, copyNumber, purchaseDate, purchasePrice)) {
+						System.out.println("Added lp to collection");
+
+						} else {
+							System.out.println("Barcode already exists");
+				}
 			break;
+			
+			
 			case "2": //removeLp();
+				int rBarcode = getInputInt("Enter lp barcode");
+				lpc.removeLp(rBarcode);
 			break;
+			
+			
 			case "3": //findLp();
+				int fBarcode = getInputInt("Enter a lp barcode:");
+				LP foundLp = lpc.findLpByBarcode(fBarcode);
+				if (foundLp != null) {
+					System.out.println("LP" + ", Title: " + foundLp.getTitle() + ", Artist: " + foundLp.getArtist() + ", Publication Date: " + foundLp.getPublicationDate());
+					for (Copy c : foundLp.getAllCopies()) {
+						System.out.println("	Copy Number: " + c.getCopyNumber() + ", purchase Date: " + c.getPurhcaseDate() + ", Purchase Price: " + c.getPurchasePrice());	
+					}
+				}
+				System.out.println();
+				lpc.findLpByBarcode(fBarcode);
+				break;
+				
+			
+			case "4": // print all Lp's
+				for (LP l : lpc.getAllLps()) {
+					System.out.println("Barcode: " + l.getBarcode() + ", Title: " + l.getTitle() + ", Artist: " + l.getArtist() + ", Publication Date: " + l.getPublicationDate());
+					for (Copy c : l.getAllCopies()){
+						System.out.println("	Copy Number: " + c.getCopyNumber() + ", purchase Date: " + c.getPurhcaseDate() + ", Purchase Price: " + c.getPurchasePrice());
+					}
+				}
 			break;
-			case "4": //updateLp();
+			
+			
+			case "5": //updateLp();
+				int cBarcode = getInputInt("Enter current lp barcode");
+				int uBarcode = getInputInt("Enter new lp barcode");
+				String uTitle = getInput("Enter new title:");
+				String uArtist = getInput("Enter new artist name:");
+				String uPublicationDate = getInput("Enter new publication date:");
+					
+				lpc.updateLp(cBarcode, uBarcode, uTitle, uArtist, uPublicationDate);
 			break;
+			
+			case "6": //updateLpCopy();
+				int gBarcode = getInputInt("Enter lp barcode");
+				
+				int CurrentCopyNumber = getInputInt("Enter current lp copy number");
+				int newCopyNumber = getInputInt("Enter new copy number:");
+				String newPurchaseDate = getInput("Enter new purchase date:");
+				Double newPurchasePrice = getInputDouble("Enter new purchase price:");
+									
+				
+				
+				Copy updatedCopy = lpc.updateLpCopy(gBarcode ,CurrentCopyNumber, newCopyNumber, newPurchaseDate, newPurchasePrice);
+				
+				if (updatedCopy != null) {
+					System.out.println("copy updated");
+				} else {
+					System.out.println("copy not updared, check barcode or copy number");
+				}
+				
+				
+			break;
+			
 			case "0": return;
 			default:
 				System.out.println("Some error - LP menu");
@@ -248,15 +320,46 @@ public class MainMenuUI {
 		}
 	}	
 	
+	
+	
+	
+	private void RegisterLoan() {
+		System.out.println("Please enter the friends phone number: ");
+		String phoneNumber = scanner.nextLine();
+		
+		System.out.println(fc.findFriend(phoneNumber));
+		
+		//selectFriend();
+		//selectLpCopy();
+		//loan();
+		//addLoan();
+	}
+	
 	private String getChoice() {
 		String input = scanner.nextLine();
 		return input;
 	}
 	
+	
 	private String getInput(String msg) {
 		System.out.println(msg);
 		return scanner.nextLine();
 	}
+	
+	private int getInputInt(String msg) {
+		System.out.println(msg);
+		int input = scanner.nextInt();
+		scanner.nextLine();
+		return input;
+	}
+	
+	private double getInputDouble(String msg) {
+		System.out.println(msg);
+		double input = scanner.nextDouble();
+		scanner.nextLine();
+		return input;
+	}
+	
 	
 	private void createFriend() {
 		String aName = getInput("Enter name:");
@@ -276,26 +379,18 @@ public class MainMenuUI {
 				", Postal Code: " + f.getPostalCode() + 
 				", City: " + f.getCity());
 	}
+		
 	
-	
+	public void createLpTest(int barcode, String title, String artist, String pubDate, int copyNumber, String purchaseDate, double purchasePrice) {
+		LP lp = new LP(barcode, title, artist, pubDate);
+		
+		if (lpc.addLp(lp, copyNumber, purchaseDate, purchasePrice)) {
+			System.out.println("Added lp to collection");
 
-	private void RegisterLoan() {
-		System.out.println("Please enter the friends phone number: ");
-		String phoneNumber = scanner.nextLine();
-		
-		System.out.println(fc.findFriend(phoneNumber));
-		
-		//selectFriend();
-		//selectLpCopy();
-		//loan();
-		//addLoan();
+			} else {
+				System.out.println("Barcode already exists");	
+			}
 	}
 	
 	
-	private void tester() {
-		Friend f1 = new Friend("Name", "12121212", "address", 1234, "aalborg");
-		Friend f2 = new Friend("Name2", "34343434", "coolAddress", 6789, "aalborg");
-		fc.addFriend(f1);
-		fc.addFriend(f2);
-	}
 }
